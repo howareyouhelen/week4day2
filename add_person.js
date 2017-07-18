@@ -13,30 +13,15 @@ const knex = require("knex")({
 
 //prints out whole table.
 // knex('famous_people').select('*').then(data => console.log(data));
-knex('famous_people')
-.where('first_name', process.argv[2])
-.orWhere('last_name', process.argv[2])
+
+//firstname and lastname
+// knex('famous_people')
+// .where('first_name', process.argv[2])
+// .orWhere('last_name', process.argv[2])
+// .then(data => console.log(data));
+
+//insert 3 command line
+knex('famous_people').insert({first_name: process.argv[2], last_name: process.argv[3], birthdate: process.argv[4]})
 .then(data => console.log(data));
-// OR .where('last_name', [process.argv[2]])
-// , (err, result) => {
-//     if (err) {
-//       return console.error("error running query", err);
-//     }
-//     console.log(select '*' from `famous_people` where `id` = 1);
+return knex.destroy();
 
-
-
-// knex.select('*').from('famous_people')
-// connection.connect((err) => {
-//   console.log(connection)
-//   if (err) {
-//     return console.error("Connection Error", err);
-//   }
-//   client.query("INSERT INTO famous_people (first_name, last_name, birthdate) VALUES ($1::text, $2::text, $3::text", [process.argv[2]], [process.argv[3]], [process.argv[4]], (err, result) => {
-//     if (err) {
-//       return console.error("error running query", err);
-//     }
-//     console.log("SELECT * FROM famous_people");
-//     client.end();
-//   });
-// });
