@@ -18,8 +18,9 @@ client.connect((err) => {
     if (err) {
       return console.error("error running query", err);
     }
-    console.log("Searching...")
-    console.log(`Found ${result.rows.length} person(s) by the name ${result.rows[0].last_name}`)
+    console.log("Searching...");
+    // console.log(`Found ${result.rows.length} person(s) by the name ${result.rows[0].last_name}`)
+    console.log(`Found ${result.rows.length} person(s) by the name ` + process.argv[2]);
     console.log(`- ${result.rows[0].id}: ${result.rows[0].first_name} ${result.rows[0].last_name}, born '${result.rows[0].birthdate}'`); //output: 1
     client.end();
   });
